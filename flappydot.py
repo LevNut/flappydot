@@ -6,7 +6,7 @@ CANVAS_WIDTH = 800
 CANVAS_HEIGHT = 500
 
 UPDATE_DELAY = 33
-GRAVITY = 1
+GRAVITY = 2.5
 
 class Dot(Sprite):
     pass
