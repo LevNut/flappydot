@@ -104,6 +104,12 @@ class GameApp(ttk.Frame):
     def init_game(self):
         pass
 
+    def pre_update(self):
+        pass
+
+    def post_update(self):
+        pass
+
     def on_key_pressed(self, event):
         pass
 
