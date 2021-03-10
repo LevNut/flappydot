@@ -88,9 +88,13 @@ class GameApp(ttk.Frame):
         self.canvas.grid(sticky="news")
 
     def animate(self):
+        self.pre_update()
+
         for element in self.elements:
             element.update()
             element.render()
+
+        self.post_update()
 
         self.after(self.update_delay, self.animate)
 

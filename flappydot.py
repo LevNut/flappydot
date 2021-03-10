@@ -21,6 +21,12 @@ class MonkeyGame(GameApp):
     def init_game(self):
         self.create_sprites()
 
+    def pre_update(self):
+        pass
+
+    def post_update(self):
+        pass
+
     def on_key_pressed(self, event):
         pass
 
