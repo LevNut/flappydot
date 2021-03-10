@@ -12,7 +12,7 @@ class Dot(Sprite):
     pass
 
 
-class MonkeyGame(GameApp):
+class FlappyGame(GameApp):
     def create_sprites(self):
         self.dot = Dot(self, 'images/dot.png', CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
 
@@ -37,6 +37,6 @@ if __name__ == "__main__":
  
     # do not allow window resizing
     root.resizable(False, False)
-    app = MonkeyGame(root, CANVAS_WIDTH, CANVAS_HEIGHT, UPDATE_DELAY)
+    app = FlappyGame(root, CANVAS_WIDTH, CANVAS_HEIGHT, UPDATE_DELAY)
     app.start()
     root.mainloop()
