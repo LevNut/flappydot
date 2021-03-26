@@ -8,16 +8,25 @@ CANVAS_HEIGHT = 500
 UPDATE_DELAY = 33
 GRAVITY = 2.5
 
-class Dot(Sprite):
-    pass
+GRAVITY = 2.5                    # this line is already in the file
+STARTING_VELOCITY = -30
 
+class Dot(Sprite):
+    def init_element(self):
+        self.vy = -30
+        self.vy = STARTING_VELOCITY
+
+    def update(self):
+        self.y += self.vy
+        self.vy += GRAVITY
 
 class FlappyGame(GameApp):
     def create_sprites(self):
         self.dot = Dot(self, 'images/dot.png', CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-
         self.elements.append(self.dot)
 
+        self.pillar_pair = PillarPair(self, 'images/pillar-pair.png', CANVAS_WIDTH, CANVAS_HEIGHT // 2)
+        self.elements.append(self.pillar_pair)
     def init_game(self):
         self.create_sprites()
 
@@ -30,6 +39,14 @@ class FlappyGame(GameApp):
     def on_key_pressed(self, event):
         pass
 
+class PillarPair(Sprite):
+    def init_element(self):
+        self.vy = -30
+        self.vy = STARTING_VELOCITY
+
+    def update(self):
+        self.y += self.vy
+        self.vy += GRAVITY
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -40,3 +57,4 @@ if __name__ == "__main__":
     app = FlappyGame(root, CANVAS_WIDTH, CANVAS_HEIGHT, UPDATE_DELAY)
     app.start()
     root.mainloop()
+
