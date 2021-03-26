@@ -11,9 +11,11 @@ GRAVITY = 2.5
 GRAVITY = 2.5                    # this line is already in the file
 STARTING_VELOCITY = -30
 
+PILLAR_SPEED = 15
+PILLAR_VELOCITY = 10
+
 class Dot(Sprite):
     def init_element(self):
-        self.vy = -30
         self.vy = STARTING_VELOCITY
 
     def update(self):
@@ -40,13 +42,12 @@ class FlappyGame(GameApp):
         pass
 
 class PillarPair(Sprite):
-    def init_element(self):
-        self.vy = -30
-        self.vy = STARTING_VELOCITY
-
     def update(self):
-        self.y += self.vy
-        self.vy += GRAVITY
+        self.vx = STARTING_VELOCITY
+        self.x += self.vx
+        self.vx += PILLAR_SPEED
+
+
 
 if __name__ == "__main__":
     root = tk.Tk()
