@@ -10,6 +10,10 @@ GRAVITY = 2.5
 STARTING_VELOCITY = -30
 JUMP_VELOCITY = -20
 
+PILLAR_SPEED = 15
+PILLAR_VELOCITY = 10
+
+
 class Dot(Sprite):
     def init_element(self):
         self.vy = STARTING_VELOCITY
@@ -30,8 +34,10 @@ class Dot(Sprite):
 class FlappyGame(GameApp):
     def create_sprites(self):
         self.dot = Dot(self, 'images/dot.png', CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
-        # root.bind("<space>", self.on_key_pressed)
         self.elements.append(self.dot)
+
+        self.pillar_pair = PillarPair(self, 'images/pillar-pair.png', CANVAS_WIDTH, CANVAS_HEIGHT // 2)
+        self.elements.append(self.pillar_pair)
 
     def init_game(self):
         self.create_sprites()
@@ -46,6 +52,13 @@ class FlappyGame(GameApp):
     def on_key_pressed(self, event):
         self.dot.start()
         self.dot.jump()
+
+
+class PillarPair(Sprite):
+    def update(self):
+        self.vx = STARTING_VELOCITY
+        self.x += self.vx
+        self.vx += PILLAR_SPEED
 
 
 if __name__ == "__main__":
